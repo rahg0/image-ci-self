@@ -33,6 +33,11 @@ jobs:
         echo "Docker contexts..."
         docker context ls
 
+        echo "Changing docker context.."
+        docker context use default
+
+        docker image ls
+
     - name: Run Orca Container Image Scan
       uses: orcasecurity/shiftleft-container-image-action@v1
       with:
