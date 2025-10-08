@@ -28,6 +28,9 @@ jobs:
         echo "Images list..."
         docker image ls
 
+        echo "Docker contexts..."
+        docker context ls
+
     - name: Run Orca Container Image Scan
       uses: orcasecurity/shiftleft-container-image-action@v1
       with:
