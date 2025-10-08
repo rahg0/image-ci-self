@@ -31,7 +31,7 @@ jobs:
         docker image ls
 
         echo "Docker contexts..."
-        docker context ls
+        docker context ls 
 
         echo "Changing docker context.."
         docker context use default
