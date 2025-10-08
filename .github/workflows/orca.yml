@@ -19,7 +19,7 @@ jobs:
     - name: Set up Docker
       uses: docker/setup-docker-action@v4
       with:
-        set-context: false
+        context: default
     
     - name: Build the Docker image
       run: |
