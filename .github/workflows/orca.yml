@@ -33,7 +33,7 @@ jobs:
         ORCA_SECURITY_API_TOKEN: ${{ secrets.ORCA_SECURITY_API_TOKEN }}
       run: |
         set +e
-        export ORCA_SECURITY_CONTAINER_DAEMON_HOST="unix:///home/runner/setup-docker-action-bd8e1d3c/docker.sock"
+        export ORCA_SECURITY_CONTAINER_DAEMON_HOST=$(docker context inspect setup-docker-action --format '{{ .Endpoints.docker.Host }}')
         echo "Orca is listening to..." 
         echo $ORCA_SECURITY_CONTAINER_DAEMON_HOST
         docker image ls
