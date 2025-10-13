@@ -41,6 +41,7 @@ jobs:
         export ORCA_SECURITY_CONTAINER_DAEMON_HOST="unix:///home/runner/setup-docker-action-bd8e1d3c/docker.sock"
         echo "Orca is listening to..." 
         echo $ORCA_SECURITY_CONTAINER_DAEMON_HOST
+        docker image ls
         apt update && apt install -y curl
         curl -sfL 'https://raw.GitHubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash
         orca-cli -p "${PROJECT_KEY}" image scan my-image-name:latest
