@@ -21,10 +21,7 @@ jobs:
     
     - name: Build the Docker image
       run: |
-        export GITHUB_SHA_SHORT="${GITHUB_SHA:0:8}"
-        echo "Check GITHUB_SHA_SHORT=${GITHUB_SHA_SHORT}" 
-        echo "GITHUB_SHA_SHORT=${GITHUB_SHA_SHORT}" >> $GITHUB_ENV
-        docker build . --file Dockerfile --tag my-image-name:${GITHUB_SHA_SHORT}
+        docker build . --file Dockerfile --tag my-image-name:latest
         echo "Images list..."
         docker image ls
 
@@ -46,7 +43,7 @@ jobs:
         echo $ORCA_SECURITY_CONTAINER_DAEMON_HOST
         apt update && apt install -y curl
         curl -sfL 'https://raw.GitHubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash
-        orca-cli -p "${PROJECT_KEY}" image scan ${IMAGE_NAME}:${GITHUB_SHA_SHORT} 
+        orca-cli -p "${PROJECT_KEY}" image scan my-image-name:latest
 
 
     - name: Run Orca Container Image Scan
