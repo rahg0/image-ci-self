@@ -24,23 +24,7 @@ jobs:
         docker image ls
 
         echo "Docker contexts..."
-        docker context ls 
-
-    - name: Orca CLI - Image Scanning
-      env:
-        ORCA_SECURITY_API_TOKEN: ${{ secrets.ORCA_SECURITY_API_TOKEN }}
-      run: |
-        set +e
-        export ORCA_SECURITY_CONTAINER_DAEMON_HOST=$(docker context inspect setup-docker-action --format '{{ .Endpoints.docker.Host }}')
-        echo "Orca is listening to this socket..." 
-        echo $ORCA_SECURITY_CONTAINER_DAEMON_HOST
-        
-        echo "Available Images...." 
-        docker image ls
-        
-        apt update && apt install -y curl
-        curl -sfL 'https://raw.GitHubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash
-        orca-cli -p "${PROJECT_KEY}" image scan rk-ci-image:latest
+        docker context ls
 
 
     - name: Run Orca Container Image Scan
